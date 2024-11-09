@@ -1,14 +1,5 @@
 <template>
-  <section>
+  <section class="block space-y-5 m-2 bg-gray-50 shadow-sm rounded-md p-6">
     <slot></slot>
   </section>
 </template>
-
-<style scoped>
-section {
-  margin: 2rem;
-  border: 1px solid #797979;
-  padding: 1rem;
-  flex: 1;
-}
-</style>

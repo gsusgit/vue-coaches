@@ -1,19 +1,22 @@
 <template>
   <base-container v-if="coach">
-    <h2>{{ coach.name }}: Projects</h2>
+    <h2 class="text-xl font-bold">{{ coach.name }}</h2>
     <base-search
       v-if="hasProjects"
       @search="updateSearch"
       :search-term="enteredSearchTerm"
       :placeholder="'Filter projects'"
     ></base-search>
-    <ul v-if="hasProjects">
-      <project-item
-        v-for="prj in availableProjects"
-        :key="prj.id"
-        :title="prj.title"
-      ></project-item>
-    </ul>
+    <div v-if="hasProjects" class="space-y-5">
+      <h3 class="text-lg text-teal-700 font-semibold pt-5">Projects</h3>
+      <ul class="space-y-3 bg-gray-100 p-4 rounded-lg shadow-sm overflow-y-scroll">
+        <project-item
+          v-for="prj in availableProjects"
+          :key="prj.id"
+          :title="prj.title"
+        ></project-item>
+      </ul>
+    </div>
     <h3 v-else>No projects found.</h3>
   </base-container>
   <base-container v-else>
@@ -49,11 +52,3 @@ watch(coach, () => {
   updateSearch('')
 })
 </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-</style>

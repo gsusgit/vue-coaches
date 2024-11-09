@@ -1,20 +1,36 @@
 <template>
   <base-container>
-    <h2>Coaches</h2>
+    <h2 class="text-xl font-bold">Coaches list</h2>
     <base-search
       @search="updateSearch"
       :search-term="enteredSearchTerm"
       :placeholder="'Filter coaches'"
     ></base-search>
     <div>
-      <button @click="sort('asc')" :class="{ selected: sorting === 'asc' }">
+      <button
+        class="focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+        @click="sort('asc')"
+        :class="[
+          sorting === 'asc'
+            ? 'text-white bg-teal-700 hover:bg-teal-700 focus:ring-teal-300'
+            : 'text-gray-700 bg-white border-2 border-gray-100 hover:bg-teal-700 hover:text-white focus:ring-teal-300'
+        ]"
+      >
         Sort Ascending
       </button>
-      <button @click="sort('desc')" :class="{ selected: sorting === 'desc' }">
+      <button
+        class="focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+        @click="sort('desc')"
+        :class="[
+          sorting === 'desc'
+            ? 'text-white bg-teal-700 hover:bg-teal-700 focus:ring-teal-300'
+            : 'text-gray-700 bg-white border-2 border-gray-100 hover:bg-teal-700 hover:text-white focus:ring-teal-300'
+        ]"
+      >
         Sort Descending
       </button>
     </div>
-    <ul>
+    <ul class="space-y-3 border-2 border-gray-100 p-3 rounded-md overflow-y-scroll">
       <coach-item
         v-for="coach in displayedCoaches"
         :key="coach.id"
@@ -54,11 +70,3 @@ watch(sort, () => {
   sort(sorting)
 })
 </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-</style>

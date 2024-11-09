@@ -1,6 +1,7 @@
 <template>
   <form>
     <input
+      class="bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5"
       type="search"
       @input="(event) => $emit('search', event.target.value)"
       :value="searchTerm"
@@ -13,19 +14,3 @@
 defineProps(['searchTerm', 'placeholder'])
 defineEmits(['search'])
 </script>
-
-<style scoped>
-input {
-  font: inherit;
-  width: 100%;
-  display: block;
-  padding: 0.15rem;
-  border: 1px solid #ccc;
-}
-
-input:focus {
-  outline: none;
-  border-color: #00006b;
-  background-color: #eeeeff;
-}
-</style>
